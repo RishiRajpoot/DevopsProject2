@@ -23,7 +23,7 @@ pipeline {
         }
         stage('CanaryDeploy') {
             environment { 
-                CANARY_REPLICAS = 1
+                CANARY_REPLICAS = 0
             }
             steps {
                 withEnv(['KUBECONFIG=${HOME}/.kube/admin.conf']) {
@@ -38,7 +38,7 @@ pipeline {
         }
         stage('DeployToProduction') {
             environment { 
-                CANARY_REPLICAS = 1
+                CANARY_REPLICAS = 0
             }
             steps {
                // input 'Deploy to Production?'
